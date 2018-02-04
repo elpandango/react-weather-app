@@ -1,9 +1,21 @@
 import React, {Component} from 'react';
 
 const WeatherCurrent = (props) => {
-    let d = new Date();
-    d.setDate(props.currWeather.sys.sunrise);
-    console.log(d.getHours());
+
+    function timeConverter(UNIX_timestamp){
+        let a = new Date(UNIX_timestamp * 1000);
+        let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        let year = a.getFullYear();
+        let month = months[a.getMonth()];
+        let date = a.getDate();
+        let hour = a.getHours();
+        let min = a.getMinutes();
+        let sec = a.getSeconds();
+        if (min < 10) min = "0" + min;
+        return hour + ':' + min;
+    }
+
+    console.log(timeConverter(1517721371));
 
     return (
         <div className="current-weather">
@@ -12,8 +24,8 @@ const WeatherCurrent = (props) => {
             <p>Ветер: {props.currWeather.wind.speed}м/с</p>
 
             <div className="sun-options">
-                <p>Восход: {props.currWeather.sys.sunrise}</p>
-                <p>Закат: {props.currWeather.sys.sunset}</p>
+                <p>Восход: {timeConverter(props.currWeather.sys.sunrise)}</p>
+                <p>Закат: {timeConverter(props.currWeather.sys.sunset)}</p>
             </div>
         </div>
     )

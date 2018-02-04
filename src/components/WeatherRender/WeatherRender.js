@@ -7,8 +7,10 @@ class weatherRender extends Component {
     constructor() {
         super();
         this.state = {
+            iconUrl: null,
             weatherData: null,
-            currentWeatherData: null
+            currentWeatherData: null,
+            weeklyWeatherData: null
         };
     }
 
@@ -19,7 +21,9 @@ class weatherRender extends Component {
         // const URL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=London,uk&appid=b858912012d97512f4f233cfd486a7e4";
         const URL = "http://api.openweathermap.org/data/2.5/forecast?q=Odessa,UA&appid=b858912012d97512f4f233cfd486a7e4&units=metric&lang=ru&cnt=8";
         const currentURL = "http://api.openweathermap.org/data/2.5/weather?q=Odessa,UA&appid=b858912012d97512f4f233cfd486a7e4&units=metric&lang=ru";
+        const weeklyURL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=Odessa,UA&cnt=7&appid=b858912012d97512f4f233cfd486a7e4";
         // const currentURL = "http://samples.openweathermap.org/data/2.5/weather?q=Odessa,UA&appid=b858912012d97512f4f233cfd486a7e4&units=metric&lang=ru";
+
 
         fetch(URL).then(res => res.json()).then(json => {
             this.setState({weatherData: json});
@@ -27,8 +31,15 @@ class weatherRender extends Component {
         });
 
         fetch(currentURL).then(res => res.json()).then(json => {
+            const iconUrl = "http://openweathermap.org/img/w/" + json.weather[0].icon + ".png";
             this.setState({currentWeatherData: json});
+            this.setState({ iconUrl: iconUrl });
             // console.log(json);
+        });
+
+        fetch(weeklyURL).then(res => res.json()).then(json => {
+            this.setState({weeklyWeatherData: json});
+            console.log(json);
         });
 
         // console.log(this.state.weatherData.list);
@@ -43,7 +54,7 @@ class weatherRender extends Component {
         // console.log(currentWeatherData.weather[0].icon);
 
         // const weather = weatherData.list.weather[0];
-        const iconUrl = "http://openweathermap.org/img/w/" + currentWeatherData.weather[0].icon + ".png";
+        // const iconUrl = "http://openweathermap.org/img/w/" + currentWeatherData.weather[0].icon + ".png";
         return (
             <div>
                 <h1>
@@ -55,7 +66,7 @@ class weatherRender extends Component {
                 <div className="weather-forecast-block">
 
                     <WeatherCurrent
-                        icon={iconUrl}
+                        icon={this.state.iconUrl}
                         currWeather={currentWeatherData}/>
 
                     <div className="thumbs-block">
@@ -63,6 +74,9 @@ class weatherRender extends Component {
                     </div>
                 </div>
 
+                <div className="weather-weekly-forecast-block">
+
+                </div>
 
             </div>
         )
