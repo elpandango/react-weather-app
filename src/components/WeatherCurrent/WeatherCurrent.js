@@ -15,8 +15,6 @@ const WeatherCurrent = (props) => {
         return hour + ':' + min;
     }
 
-    console.log(timeConverter(1517721371));
-
     return (
         <div className="current-weather">
             <img src={props.icon}/>

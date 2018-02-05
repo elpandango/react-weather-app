@@ -109,6 +109,47 @@ h1 {
 .weather-forecast-block-item:nth-of-type(even) .weather-forecast-block-item  {
   background-color: #ffffff;
 }
+.weather-forecast-block-item .icon {
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 4px;
+  background-size: 320px 180px;
+  background-position: -115px -27px;
+  background-image: url("../assets/Animation-Weather-Icons-Pack-Illustration-Vector.gif");
+}
+.weather-forecast-block-item .icon.clean {
+  background-position: -176px -113px;
+}
+.weather-forecast-block-item .icon.few-clouds {
+  background-position: -27px -68px;
+}
+.weather-forecast-block-item .icon.clouds {
+  background-position: -106px -114px;
+}
+.weather-forecast-block-item .icon.scattered-clouds {
+  background-position: -190px -128px;
+}
+.weather-forecast-block-item .icon.broken-clouds {
+  background-position: -28px -21px;
+}
+.weather-forecast-block-item .icon.shower-rain {
+  background-position: -237px -20px;
+}
+.weather-forecast-block-item .icon.rain {
+  background-position: -171px -23px;
+}
+.weather-forecast-block-item .icon.thunderstorm {
+  background-position: -238px -71px;
+}
+.weather-forecast-block-item .icon.snow {
+  background-position: -104px -22px;
+}
+.weather-forecast-block-item .icon.mist {
+  background-position: -106px -114px;
+}
+
 .weather-forecast-block-item img {
   width: 50px;
   height: 50px;
