@@ -89,6 +89,7 @@ h1 {
   flex-wrap: nowrap;
   flex: 1;
 }
+
 .weather-forecast-block-item-wrap {
   display: flex;
   flex-direction: column;
@@ -129,7 +130,7 @@ h1 {
   background-position: -106px -114px;
 }
 .weather-forecast-block-item .icon.scattered-clouds {
-  background-position: -190px -128px;
+  background-position: -173px -69px;
 }
 .weather-forecast-block-item .icon.broken-clouds {
   background-position: -28px -21px;
@@ -197,4 +198,17 @@ h1 {
 .current-weather .sun-options p {
   font-size: 10px;
   margin: 0;
+}
+
+.weather-weekly-forecast-block {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.weather-weekly-forecast-block .weather-forecast-block-item-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 10%;
 }
