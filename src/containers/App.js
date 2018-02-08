@@ -7,7 +7,8 @@ import WeatherRequestInput from '../components/WeatherRequestInput/WeatherReques
 class App extends Component {
 
     state = {
-        city: 'Odessa,ua'
+        city: 'Odessa,ua',
+        cityUri: 'Odessa,ua'
     };
 
     cityKeyPressHandler = (event) => {
@@ -16,10 +17,10 @@ class App extends Component {
 
         if (event.key === 'Enter') {
             tempUri = encodeURI(event.target.value);
-            console.log(tempUri);
-            this.setState({city: tempUri});
+            // console.log(tempUri);
+            this.setState({cityUri: tempUri});
+            this.setState({ city: city });
         }
-        this.setState({ city: city });
     };
 
     cityInputHandler = (event) => {
@@ -45,7 +46,8 @@ class App extends Component {
                     />
 
                     <WeatherRender
-                        city={this.state.city}/>
+                        city={this.state.city}
+                        cityUri={this.state.cityUri}/>
                 </div>
             </div>
         );

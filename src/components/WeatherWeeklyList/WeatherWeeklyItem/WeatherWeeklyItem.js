@@ -2,9 +2,7 @@ import React from 'react';
 
 const weatherWeeklyItem = (props) => {
 
-    let dayOfWeek = 'Monday';
-
-    console.log(props.day);
+    let dayOfWeek = 'Понедельник';
 
     switch(props.day) {
         case 'Mon':

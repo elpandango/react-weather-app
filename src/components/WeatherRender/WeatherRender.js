@@ -9,6 +9,7 @@ class weatherRender extends Component {
         super();
         this.state = {
             city: 'Odessa,UA',
+            cityUri: 'Odessa,UA',
             iconUrl: null,
             weatherData: null,
             currentWeatherData: null,
@@ -19,32 +20,23 @@ class weatherRender extends Component {
 
     componentWillReceiveProps( nextProps ) {
         console.log('Inside componentWillReceiveProps', nextProps);
-        const city = this.props.city;
-        this.setState({city: city});
-        console.log('URI ' + city);
-    }
+        const cityUri = this.props.cityUri;
+        // this.setState({city: cityUri});
+        console.log('URI ' + cityUri);
 
-    // shouldComponentUpdate( nextProps, nextState ) {
-    //     return nextProps.city !== this.props.city;
-    // }
-
-    componentDidMount() {
-
-        // const zip = 94088;
-
-        // const URL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=London,uk&appid=b858912012d97512f4f233cfd486a7e4";
-
-        const city = this.state.city;
+        // const city = this.state.city;
         // this.setState({tempUri: city});
-        console.log('URI ' + city);
+        // console.log('URI ' + city);
         const URL = "http://api.openweathermap.org/data/2.5/forecast?q=Odessa,UA&appid=b858912012d97512f4f233cfd486a7e4&units=metric&lang=ru&cnt=8";
-        const currentURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=b858912012d97512f4f233cfd486a7e4&units=metric&lang=ru";
-        const yahooWeather = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22odessa%2C%20ua%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-        // const weeklyURL = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=35&lon=139&cnt=10&appid=b858912012d97512f4f233cfd486a7e4";
-        // const currentURL = "http://samples.openweathermap.org/data/2.5/weather?q=Odessa,UA&appid=b858912012d97512f4f233cfd486a7e4&units=metric&lang=ru";
+        const currentURL = "http://api.openweathermap.org/data/2.5/weather?q=Odessa,UA&appid=b858912012d97512f4f233cfd486a7e4&units=metric&lang=ru";
+        const yahooWeather = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + cityUri + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
 
-        // console.log('City = ' + this.props.city);
-        // console.log('city = ' + this.props.city);
+        const accuWeather = "http://api.accuweather.com/locations/v1/cities/translate.json?q=roma&language=en-us&apikey=kLU6H4NkXXGJBRNyt5uCfXoGxyzxtJry";
+
+        fetch(accuWeather).then(res => res.json()).then(json => {
+            // this.setState({weatherData: json});
+            console.log(json);
+        });
 
         fetch(URL).then(res => res.json()).then(json => {
             this.setState({weatherData: json});
@@ -62,6 +54,47 @@ class weatherRender extends Component {
             this.setState({currentWeeklyWeatherData: json});
             // console.log(json.query.results.channel.item.forecast);
         });
+
+    }
+
+    // shouldComponentUpdate( nextProps, nextState ) {
+    //     return nextProps.city !== this.props.city;
+    // }
+
+    componentDidMount() {
+
+        // const zip = 94088;
+
+        // const URL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=London,uk&appid=b858912012d97512f4f233cfd486a7e4";
+
+        // const city = this.state.city;
+        // this.setState({tempUri: city});
+        // console.log('URI ' + city);
+        // const URL = "http://api.openweathermap.org/data/2.5/forecast?q=Odessa,UA&appid=b858912012d97512f4f233cfd486a7e4&units=metric&lang=ru&cnt=8";
+        // const currentURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=b858912012d97512f4f233cfd486a7e4&units=metric&lang=ru";
+        // const yahooWeather = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22odessa%2C%20ua%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+        // const weeklyURL = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=35&lon=139&cnt=10&appid=b858912012d97512f4f233cfd486a7e4";
+        // const currentURL = "http://samples.openweathermap.org/data/2.5/weather?q=Odessa,UA&appid=b858912012d97512f4f233cfd486a7e4&units=metric&lang=ru";
+
+        // console.log('City = ' + this.props.city);
+        // console.log('city = ' + this.props.city);
+
+        // fetch(URL).then(res => res.json()).then(json => {
+        //     this.setState({weatherData: json});
+        //     // console.log(json);
+        // });
+        //
+        // fetch(currentURL).then(res => res.json()).then(json => {
+        //     const iconUrl = "http://openweathermap.org/img/w/" + json.weather[0].icon + ".png";
+        //     this.setState({currentWeatherData: json});
+        //     this.setState({iconUrl: iconUrl});
+        //     // console.log(json);
+        // });
+        //
+        // fetch(yahooWeather).then(res => res.json()).then(json => {
+        //     this.setState({currentWeeklyWeatherData: json});
+        //     // console.log(json.query.results.channel.item.forecast);
+        // });
 
         // console.log(this.state.weatherData.list);
         // console.log(this.state.weatherData.list[0]);
@@ -84,7 +117,7 @@ class weatherRender extends Component {
             <div>
                 <h1>
                     {/*Погода в городе {currentWeatherData.name}*/}
-                    Погода в городе {this.state.city}
+                    Погода в городе {decodeURI(this.props.cityUri)}
                 </h1>
 
                 <div className="weather-forecast-block">
