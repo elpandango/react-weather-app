@@ -1,8 +1,9 @@
 import React from 'react';
-import WeatherListItem from '../../components/WeatherIconList/WeatherListItem/WeatherListItem';
+import WeatherListItem from '../../components/WeatherHoursList/WeatherListItem/WeatherListItem';
 
-const weatherIconItem = (props) => {
-    return props.weather.map((item, index) => {
+const weatherHoursList = (props) => {
+
+    return props.weather.list.map((item, index) => {
         return <WeatherListItem
             temp={item.main.temp}
             temp_min={item.main.temp_min}
@@ -15,4 +16,4 @@ const weatherIconItem = (props) => {
     } );
 };
 
-export default weatherIconItem;
+export default weatherHoursList;

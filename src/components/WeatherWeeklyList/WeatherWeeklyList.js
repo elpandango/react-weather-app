@@ -2,7 +2,7 @@ import React from 'react';
 import WeatherWeeklyItem from '../../components/WeatherWeeklyList/WeatherWeeklyItem/WeatherWeeklyItem';
 
 const weatherWeeklyList = (props) => {
-    // console.log(props.weather.query.results.channel.item.forecast);
+
     return props.weather.query.results.channel.item.forecast.map((item, index) => {
         return <WeatherWeeklyItem
             date={item.date}
@@ -12,7 +12,6 @@ const weatherWeeklyList = (props) => {
             day={item.day}
             text={item.text}
         />
-    } );
+    });
 };
-
 export default weatherWeeklyList;

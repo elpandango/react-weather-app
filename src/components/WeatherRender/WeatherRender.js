@@ -1,138 +1,53 @@
 import React, {Component} from 'react';
-import WeatherIconList from '../WeatherIconList/WeatherIconList';
+import WeatherHoursList from '../WeatherHoursList/WeatherHoursList';
 import WeatherCurrent from '../WeatherCurrent/WeatherCurrent';
 import WeatherWeeklyList from '../WeatherWeeklyList/WeatherWeeklyList';
 
-
 class weatherRender extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            city: 'Odessa,UA',
-            cityUri: 'Odessa,UA',
+            city: this.props.city,
+            uri: this.props.uri,
+            lat: this.props.lat,
+            long: this.props.long,
             iconUrl: null,
-            weatherData: null,
+            weatherData: this.props.weatherData,
             currentWeatherData: null,
-            weeklyWeatherData: null,
-            currentWeeklyWeatherData: null
+            weeklyWeatherData: this.props.weeklyWeatherData,
         };
     }
 
-    componentWillReceiveProps( nextProps ) {
-        console.log('Inside componentWillReceiveProps', nextProps);
-        const cityUri = this.props.cityUri;
-        // this.setState({city: cityUri});
-        console.log('URI ' + cityUri);
-
-        // const city = this.state.city;
-        // this.setState({tempUri: city});
-        // console.log('URI ' + city);
-        const URL = "http://api.openweathermap.org/data/2.5/forecast?q=Odessa,UA&appid=b858912012d97512f4f233cfd486a7e4&units=metric&lang=ru&cnt=8";
-        const currentURL = "http://api.openweathermap.org/data/2.5/weather?q=Odessa,UA&appid=b858912012d97512f4f233cfd486a7e4&units=metric&lang=ru";
-        const yahooWeather = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + cityUri + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-
-        const accuWeather = "http://api.accuweather.com/locations/v1/cities/translate.json?q=roma&language=en-us&apikey=kLU6H4NkXXGJBRNyt5uCfXoGxyzxtJry";
-
-        fetch(accuWeather).then(res => res.json()).then(json => {
-            // this.setState({weatherData: json});
-            console.log(json);
-        });
-
-        fetch(URL).then(res => res.json()).then(json => {
-            this.setState({weatherData: json});
-            // console.log(json);
-        });
-
-        fetch(currentURL).then(res => res.json()).then(json => {
-            const iconUrl = "http://openweathermap.org/img/w/" + json.weather[0].icon + ".png";
-            this.setState({currentWeatherData: json});
-            this.setState({iconUrl: iconUrl});
-            // console.log(json);
-        });
-
-        fetch(yahooWeather).then(res => res.json()).then(json => {
-            this.setState({currentWeeklyWeatherData: json});
-            // console.log(json.query.results.channel.item.forecast);
-        });
-
-    }
-
-    // shouldComponentUpdate( nextProps, nextState ) {
-    //     return nextProps.city !== this.props.city;
-    // }
-
     componentDidMount() {
 
-        // const zip = 94088;
-
-        // const URL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=London,uk&appid=b858912012d97512f4f233cfd486a7e4";
-
-        // const city = this.state.city;
-        // this.setState({tempUri: city});
-        // console.log('URI ' + city);
-        // const URL = "http://api.openweathermap.org/data/2.5/forecast?q=Odessa,UA&appid=b858912012d97512f4f233cfd486a7e4&units=metric&lang=ru&cnt=8";
-        // const currentURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=b858912012d97512f4f233cfd486a7e4&units=metric&lang=ru";
-        // const yahooWeather = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22odessa%2C%20ua%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-        // const weeklyURL = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=35&lon=139&cnt=10&appid=b858912012d97512f4f233cfd486a7e4";
-        // const currentURL = "http://samples.openweathermap.org/data/2.5/weather?q=Odessa,UA&appid=b858912012d97512f4f233cfd486a7e4&units=metric&lang=ru";
-
-        // console.log('City = ' + this.props.city);
-        // console.log('city = ' + this.props.city);
-
-        // fetch(URL).then(res => res.json()).then(json => {
-        //     this.setState({weatherData: json});
-        //     // console.log(json);
-        // });
-        //
-        // fetch(currentURL).then(res => res.json()).then(json => {
-        //     const iconUrl = "http://openweathermap.org/img/w/" + json.weather[0].icon + ".png";
-        //     this.setState({currentWeatherData: json});
-        //     this.setState({iconUrl: iconUrl});
-        //     // console.log(json);
-        // });
-        //
-        // fetch(yahooWeather).then(res => res.json()).then(json => {
-        //     this.setState({currentWeeklyWeatherData: json});
-        //     // console.log(json.query.results.channel.item.forecast);
-        // });
-
-        // console.log(this.state.weatherData.list);
-        // console.log(this.state.weatherData.list[0]);
     }
 
     render() {
-        // console.log(this.props.city);
-        // console.log('URI ' + this.props.city);
+        const weeklyWeatherData = this.props.weeklyWeatherData;
         const weatherData = this.state.weatherData;
-        const currentWeatherData = this.state.currentWeatherData;
-        const currentWeeklyWeatherData = this.state.currentWeeklyWeatherData;
+        // console.log('Render weatherData: = ' + weatherData.city.name);
+        if (!weeklyWeatherData) return <div>Loading</div>;
         if (!weatherData) return <div>Loading</div>;
-        if (!currentWeatherData) return <div>Loading</div>;
-        if (!currentWeeklyWeatherData) return <div>Loading</div>;
-        // console.log(weatherData.list);
-        // console.log(currentWeatherData.weather[0].icon);
-        // const weather = weatherData.list.weather[0];
-        // const iconUrl = "http://openweathermap.org/img/w/" + currentWeatherData.weather[0].icon + ".png";
+
         return (
             <div>
-                <h1>
-                    {/*Погода в городе {currentWeatherData.name}*/}
-                    Погода в городе {decodeURI(this.props.cityUri)}
-                </h1>
+
+                <h1>Погода в городе: { decodeURI(this.props.cityUri)}</h1>
+                <h3>Широта: {this.props.cityLat}</h3>
+                <h3>Долгота: {this.props.cityLong}</h3>
 
                 <div className="weather-forecast-block">
 
                     <WeatherCurrent
-                        icon={this.state.iconUrl}
-                        currWeather={currentWeatherData}/>
+                        currWeather={weeklyWeatherData}/>
 
                     <div className="thumbs-block">
-                        <WeatherIconList weather={weatherData.list}/>
+                        <WeatherHoursList weather={this.props.weatherData}/>
                     </div>
                 </div>
 
                 <div className="weather-weekly-forecast-block">
-                    <WeatherWeeklyList weather={currentWeeklyWeatherData}/>
+                    <WeatherWeeklyList weather={this.props.weeklyWeatherData}/>
                 </div>
 
             </div>
