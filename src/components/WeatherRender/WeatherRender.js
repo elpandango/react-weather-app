@@ -24,7 +24,7 @@ class weatherRender extends Component {
 
     render() {
         const weeklyWeatherData = this.props.weeklyWeatherData;
-        const weatherData = this.state.weatherData;
+        const weatherData = this.props.weatherData;
         // console.log('Render weatherData: = ' + weatherData.city.name);
         if (!weeklyWeatherData) return <div>Loading</div>;
         if (!weatherData) return <div>Loading</div>;
@@ -33,8 +33,8 @@ class weatherRender extends Component {
             <div>
 
                 <h1>Погода в городе: { decodeURI(this.props.cityUri)}</h1>
-                <h3>Широта: {this.props.cityLat}</h3>
-                <h3>Долгота: {this.props.cityLong}</h3>
+                {/*<h3>Широта: {this.props.cityLat}</h3>*/}
+                {/*<h3>Долгота: {this.props.cityLong}</h3>*/}
 
                 <div className="weather-forecast-block">
 

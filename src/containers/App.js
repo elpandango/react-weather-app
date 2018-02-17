@@ -10,19 +10,17 @@ class App extends Component {
 
         const yahooWeather = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22Odessa,ua%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
         fetch(yahooWeather).then(res => res.json()).then(json => {
-            this.setState(
-                {weeklyWeatherData: json});
+            this.setState({ weeklyWeatherData: json });
         });
         const URL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat + "&lon=" + this.state.long + "&appid=b858912012d97512f4f233cfd486a7e4&units=metric&lang=ru&cnt=8";
         fetch(URL).then(res => res.json()).then(json => {
             this.setState({weatherData: json});
-            // console.log('City is - ' + json.city.name);
         });
     }
 
     state = {
-        city: 'Odessa,ua',
-        uri: 'Odessa,ua',
+        city: 'Одесса',
+        uri: 'Одесса',
         lat: '46.469479',
         long: '30.74003',
         weeklyWeatherData: null,
@@ -67,7 +65,7 @@ class App extends Component {
     };
 
     render() {
-        if (!this.state.weeklyWeatherData) return <div>Loading</div>;
+        if (!this.state.weeklyWeatherData) return <div><img src="../../images/preloader.gif" alt="preloader"/></div>;
         if (!this.state.weatherData) return <div>Loading</div>;
         return (
             <div className="App">

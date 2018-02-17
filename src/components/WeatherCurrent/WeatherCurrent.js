@@ -20,8 +20,10 @@ const WeatherCurrent = (props) => {
     return (
         <div className="current-weather">
             {/*<img src={props.icon}/>*/}
-            {/*<p className="temp">{props.currWeather.main.temp}°</p>*/}
+            <strong className="temp">{Math.round((props.currWeather.query.results.channel.item.condition.temp - 32)*5/9)}°</strong>
+            <strong>{props.currWeather.query.results.channel.item.condition.text}</strong>
             {/*<p>Ветер: {props.currWeather.wind.speed}м/с</p>*/}
+            <p>Влажность: {props.currWeather.query.results.channel.atmosphere.humidity}</p>
 
             <div className="sun-options">
                 {/*<p>Восход: {timeConverter(props.currWeather.query.results.channel.astronomy.sunrise)}</p>*/}
