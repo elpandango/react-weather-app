@@ -1,70 +1,91 @@
 import React from 'react';
 
 const weatherIconItem = (props) => {
-    const iconUrl = "http://openweathermap.org/img/w/" + props.icon + ".png";
-
-    let weatherIconClass = 'icon';
+    let weatherIconClass = 'weather-icon';
 
 
     switch (props.icon) {
         case '01d':
+            weatherIconClass = 'weather-icon sunny';
+            break;
         case '01n':
-            weatherIconClass = 'icon clean';
+            weatherIconClass = 'weather-icon clear-night';
             break;
         case '02d':
+            weatherIconClass = 'weather-icon partly-cloudy';
+            break;
         case '02n':
-            weatherIconClass = 'icon few-clouds';
+            weatherIconClass = 'weather-icon partly-cloudy-night';
             break;
         case '03d':
+            weatherIconClass = 'weather-icon mostly-cloudy';
+            break;
         case '03n':
-            weatherIconClass = 'icon clouds';
+            weatherIconClass = 'weather-icon mostly-cloudy-night';
             break;
         case '04d':
         case '04n':
-            weatherIconClass = 'icon scattered-clouds';
+            weatherIconClass = 'weather-icon cloudy-weather';
             break;
         case '05d':
         case '05n':
-            weatherIconClass = 'icon broken-clouds';
+            weatherIconClass = 'weather-icon broken-clouds';
             break;
         case '09d':
         case '09n':
-            weatherIconClass = 'icon shower-rain';
+            weatherIconClass = 'weather-icon rainy-weather';
             break;
         case '10d':
+            weatherIconClass = 'weather-icon rainy-day';
+            break;
         case '10n':
-            weatherIconClass = 'icon rain';
+            weatherIconClass = 'weather-icon rainy-night';
             break;
         case '11d':
+            weatherIconClass = 'weather-icon storm-weather-day';
+            break;
         case '11n':
-            weatherIconClass = 'icon thunderstorm';
+            weatherIconClass = 'weather-icon storm-weather-night';
             break;
         case '13d':
+            weatherIconClass = 'weather-icon snow-day';
+            break;
         case '13n':
-            weatherIconClass = 'icon snow';
+            weatherIconClass = 'weather-icon snow-night';
             break;
         case '50d':
+            weatherIconClass = 'weather-icon haze-day';
+            break;
         case '50n':
-            weatherIconClass = 'icon mist';
+            weatherIconClass = 'weather-icon haze-night';
             break;
     }
 
     return (
         <div className="weather-forecast-block-item-wrap">
-            <div className="date">{props.date}</div>
-            <div className="weather-forecast-block-item">
+
+            <div className="date-info-block">
+                <div className="date">{props.date}</div>
+            </div>
+
+            <div className="weather-inner-item">
                 <div className={weatherIconClass}></div>
-                <div className="temp">
-                    <div className="temp-col">
-                        <p>Мин</p>
-                        <strong>{Math.round(props.temp_min)}°</strong>
-                    </div>
-                    <div className="temp-col">
-                        <p>Макс</p>
-                        <strong>{Math.round(props.temp_max)}°</strong>
-                    </div>
+                <p>{props.description}</p>
+            </div>
+
+            <div className="weather-inner-item">
+
+                <div className="tempCell">
+                    <p>Max</p>
+                    <strong>{Math.round(props.temp_min)}°</strong>
+                </div>
+
+                <div className="tempCell">
+                    <p>Min</p>
+                    <strong>{Math.round(props.temp_max)}°</strong>
                 </div>
             </div>
+
         </div>
     )
 };

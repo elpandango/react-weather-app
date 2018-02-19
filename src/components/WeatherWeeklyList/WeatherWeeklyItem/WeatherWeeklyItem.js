@@ -36,7 +36,11 @@ const weatherWeeklyItem = (props) => {
             break;
         case '30':
         case '23':
+        case '44':
             weatherIconClass = 'weather-icon partly-cloudy';
+            break;
+        default:
+            weatherIconClass = 'weather-icon sunny';
             break;
     }
 

@@ -82,12 +82,20 @@ h1 {
   text-align: left;
 }
 
+.preloader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
 .weather-forecast-block {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   width: 100%;
-  max-width: 991px;
   margin: 0 auto;
 }
 .weather-forecast-block .thumbs-block {
@@ -102,16 +110,19 @@ h1 {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 15px;
 }
 .weather-forecast-block-item-wrap .date-info-block {
   height: 65px;
   margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
 }
 .weather-forecast-block-item-wrap .date {
   font-size: 14px;
   font-weight: bold;
-  padding: 10px;
 }
 .weather-forecast-block-item {
   background-color: #eeeeee;
@@ -184,7 +195,7 @@ h1 {
 .current-weather {
   display: flex;
   flex-direction: column;
-  width: 250px;
+  width: 240px;
   justify-content: flex-start;
   align-items: center;
 }
@@ -215,6 +226,8 @@ h1 {
   display: flex;
   flex-direction: row;
   box-shadow: 0px 2px 16.56px 1.44px rgba(0, 0, 0, 0.18);
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .weather-container .weather-row .heading-elements {
@@ -227,6 +240,7 @@ h1 {
   background-image: -ms-linear-gradient( 90deg, rgb(62,149,230) 0%, rgb(30,236,255) 100%);
   margin-bottom: 15px;
   padding: 10px;
+  max-width: 80px;
   height: 110px;
   display: flex;
   flex-direction: column;
@@ -234,11 +248,14 @@ h1 {
   align-items: center;
   color: #ffffff;
 }
+.weather-container .weather-row .heading-elements-item:last-of-type {
+  margin-bottom: 0;
+}
 .weather-container .weather-row .heading-elements-item.short {
   height: 65px;
 }
 .weather-container .weather-row .heading-elements-item .title {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
 }
 .weather-container .weather-row .heading-elements-item img {
@@ -271,7 +288,9 @@ h1 {
   justify-content: space-between;
   padding: 10px;
 }
-
+.weather-inner-item:last-of-type {
+  margin-bottom: 0;
+}
 .weather-inner-item .tempCell {
   font-weight: 500;
   padding: 0 20px;
@@ -314,9 +333,65 @@ h1 {
   background-repeat: no-repeat;
   background-position: center;
 }
+.current-weather .weather-icon {
+  height: 100px;
+}
+
+.weather-icon.unknown {
+  background-image: url(../assets/images/material-icon-set/unknown.png);
+}
+
+.weather-icon.rain-snow {
+  background-image: url(../assets/images/material-icon-set/rain-snow.png);
+}
+.weather-icon.sunny {
+  background-image: url(../assets/images/material-icon-set/clear-day.png);
+}
+.weather-icon.clear-night {
+  background-image: url(../assets/images/material-icon-set/clear-night.png);
+}
 .weather-icon.mostly-cloudy {
   background-image: url(../assets/images/material-icon-set/mostly-cloudy.png);
 }
+.weather-icon.mostly-cloudy-night {
+  background-image: url(../assets/images/material-icon-set/mostly-cloudy-night.png);
+}
 .weather-icon.partly-cloudy {
   background-image: url(../assets/images/material-icon-set/partly-cloudy.png);
+}
+.weather-icon.partly-cloudy-night {
+  background-image: url(../assets/images/material-icon-set/partly-cloudy-night.png);
+}
+.weather-icon.cloudy-weather {
+  background-image: url(../assets/images/material-icon-set/cloudy-weather.png);
+}
+.weather-icon.rainy-weather {
+  background-image: url(../assets/images/material-icon-set/rainy-weather.png);
+}
+.weather-icon.rainy-day {
+  background-image: url(../assets/images/material-icon-set/rainy-day.png);
+}
+.weather-icon.rainy-night {
+  background-image: url(../assets/images/material-icon-set/rainy-night.png);
+}
+.weather-icon.storm-weather {
+  background-image: url(../assets/images/material-icon-set/storm-weather.png);
+}
+.weather-icon.storm-weather-day {
+  background-image: url(../assets/images/material-icon-set/storm-weather-day.png);
+}
+.weather-icon.storm-weather-night {
+  background-image: url(../assets/images/material-icon-set/storm-weather-night.png);
+}
+.weather-icon.snow-day {
+  background-image: url(../assets/images/material-icon-set/snow-day.png);
+}
+.weather-icon.snow-night {
+  background-image: url(../assets/images/material-icon-set/snow-night.png);
+}
+.weather-icon.haze-day {
+  background-image: url(../assets/images/material-icon-set/haze-day.png);
+}
+.weather-icon.haze-night {
+  background-image: url(../assets/images/material-icon-set/haze-night.png);
 }
