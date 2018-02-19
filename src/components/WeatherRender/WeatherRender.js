@@ -33,8 +33,6 @@ class weatherRender extends Component {
             <div>
 
                 <h1>Погода в городе: { decodeURI(this.props.cityUri)}</h1>
-                {/*<h3>Широта: {this.props.cityLat}</h3>*/}
-                {/*<h3>Долгота: {this.props.cityLong}</h3>*/}
 
                 <div className="weather-forecast-block">
 
@@ -46,9 +44,34 @@ class weatherRender extends Component {
                     </div>
                 </div>
 
-                <div className="weather-weekly-forecast-block">
-                    <WeatherWeeklyList weather={this.props.weeklyWeatherData}/>
+
+                <div className="weather-container">
+                    <div className="weather-row">
+                        <div className="heading-elements">
+                            <div className="heading-elements-item short">
+                                <div className="title">Date</div>
+                                <div className="result">Day</div>
+                            </div>
+
+                            <div className="heading-elements-item">
+                                <div className="title">Weather</div>
+                                <img src="../images/material-icon-set/weather_icon.png" alt=""/>
+                            </div>
+
+                            <div className="heading-elements-item">
+                                <div className="title">Temperature</div>
+                                <img src="../images/material-icon-set/temp_icon.png" alt=""/>
+                            </div>
+                        </div>
+
+                        <div className="weather-weekly-forecast-block">
+                            <WeatherWeeklyList weather={this.props.weeklyWeatherData}/>
+                        </div>
+
+                    </div>
                 </div>
+
+
 
             </div>
         )

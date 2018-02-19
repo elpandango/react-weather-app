@@ -10,6 +10,7 @@ const weatherWeeklyList = (props) => {
             temp_high={item.high}
             temp_low={item.low}
             day={item.day}
+            code={item.code}
             text={item.text}
         />
     });

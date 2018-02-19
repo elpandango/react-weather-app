@@ -3,6 +3,7 @@ import React from 'react';
 const weatherWeeklyItem = (props) => {
 
     let dayOfWeek = 'Понедельник';
+    let weatherIconClass = 'weather-icon';
 
     switch(props.day) {
         case 'Mon':
@@ -29,21 +30,42 @@ const weatherWeeklyItem = (props) => {
 
     }
 
+    switch (props.code) {
+        case '28':
+            weatherIconClass = 'weather-icon mostly-cloudy';
+            break;
+        case '30':
+        case '23':
+            weatherIconClass = 'weather-icon partly-cloudy';
+            break;
+    }
+
     return (
+
         <div className="weather-forecast-block-item-wrap">
-            <div className="day-of-week">{dayOfWeek}</div>
-            <div className="date">{props.date}</div>
-            <div className="weather-forecast-block-item">
-                <div>{props.text}</div>
-                <div className="temp">
-                    <div className="temp-col">
-                        <p>Мин</p>
-                        <strong>{Math.round((props.temp_low-32)*5/9)}°</strong>
-                    </div>
-                    <div className="temp-col">
-                        <p>Макс</p>
-                        <strong>{Math.round((props.temp_high-32)*5/9)}°</strong>
-                    </div>
+
+            <div className="date-info-block">
+                <div className="day-of-week">{props.day}</div>
+                <div className="date">{props.date}</div>
+            </div>
+
+            <div className="weather-inner-item">
+                <div className={weatherIconClass}></div>
+                <div className="weather-description">
+                    {props.text}
+                </div>
+            </div>
+
+            <div className="weather-inner-item">
+
+                <div className="tempCell">
+                    <p>Max</p>
+                    <strong>{Math.round((props.temp_high-32)*5/9)}°</strong>
+                </div>
+
+                <div className="tempCell">
+                    <p>Min</p>
+                    <strong>{Math.round((props.temp_low-32)*5/9)}°</strong>
                 </div>
             </div>
         </div>
