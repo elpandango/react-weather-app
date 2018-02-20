@@ -12,7 +12,7 @@ class App extends Component {
         fetch(yahooWeather).then(res => res.json()).then(json => {
             this.setState({ weeklyWeatherData: json });
         });
-        const URL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat + "&lon=" + this.state.long + "&appid=b858912012d97512f4f233cfd486a7e4&units=metric&cnt=8";
+        const URL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat + "&lon=" + this.state.long + "&appid=b858912012d97512f4f233cfd486a7e4&units=metric&cnt=8";
         fetch(URL).then(res => res.json()).then(json => {
             this.setState({weatherData: json});
         });
@@ -38,7 +38,7 @@ class App extends Component {
                     long: json.query.results.channel.item.long,
                 });
 
-            const URL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + json.query.results.channel.item.lat + "&lon=" + json.query.results.channel.item.long + "&appid=b858912012d97512f4f233cfd486a7e4&units=metric&cnt=8";
+            const URL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + json.query.results.channel.item.lat + "&lon=" + json.query.results.channel.item.long + "&appid=b858912012d97512f4f233cfd486a7e4&units=metric&cnt=8";
             fetch(URL).then(res => res.json()).then(json => {
                 this.setState({weatherData: json});
             });
