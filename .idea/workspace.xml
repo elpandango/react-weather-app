@@ -98,8 +98,8 @@
           <file leaf-file-name="App.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/containers/App.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="344">
-                  <caret line="600" column="20" lean-forward="true" selection-start-line="600" selection-start-column="20" selection-end-line="600" selection-end-column="20" />
+                <state relative-caret-position="365">
+                  <caret line="511" column="23" lean-forward="false" selection-start-line="511" selection-start-column="23" selection-end-line="511" selection-end-column="23" />
                   <folding />
                 </state>
               </provider>
@@ -165,7 +165,6 @@
       <find>.current-weather</find>
       <find>.weather-forecast-block</find>
       <find>.weather-inner-item</find>
-      <find>weather-icon</find>
       <find>url</find>
       <find>current</find>
       <find>current-weather .we</find>
@@ -178,6 +177,7 @@
       <find>humidi</find>
       <find>sun-opt</find>
       <find>weather-container</find>
+      <find>weather-icon</find>
     </findStrings>
     <replaceStrings>
       <replace>city</replace>
@@ -398,12 +398,12 @@
       <workItem from="1519158646947" duration="72000" />
       <workItem from="1519161629499" duration="990000" />
       <workItem from="1519162694331" duration="19000" />
-      <workItem from="1519244125952" duration="7723000" />
+      <workItem from="1519244125952" duration="7922000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103505000" />
+    <option name="totallyTimeSpent" value="103704000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -811,8 +811,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/App.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="600" column="20" lean-forward="true" selection-start-line="600" selection-start-column="20" selection-end-line="600" selection-end-column="20" />
+        <state relative-caret-position="365">
+          <caret line="511" column="23" lean-forward="false" selection-start-line="511" selection-start-column="23" selection-end-line="511" selection-end-column="23" />
           <folding />
         </state>
       </provider>
