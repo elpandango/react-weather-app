@@ -10,7 +10,7 @@ class App extends Component {
 
         const yahooWeather = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22Odessa,ua%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
         fetch(yahooWeather).then(res => res.json()).then(json => {
-            this.setState({ weeklyWeatherData: json });
+            this.setState({weeklyWeatherData: json});
         });
         const URL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat + "&lon=" + this.state.long + "&appid=b858912012d97512f4f233cfd486a7e4&units=metric&cnt=8";
         fetch(URL).then(res => res.json()).then(json => {
@@ -65,30 +65,58 @@ class App extends Component {
     };
 
     render() {
-        if (!this.state.weeklyWeatherData) return <div><img className="preloader" src="../../images/preloader.gif" alt="preloader"/></div>;
-        if (!this.state.weatherData) return <div>Loading</div>;
+        if (!this.state.weeklyWeatherData) return <div className="preloader"><img src="../../images/preloader.gif"
+                                                                                  alt="preloader"/></div>;
+        if (!this.state.weatherData) return <div className="preloader"><img src="../../images/preloader.gif"
+                                                                            alt="preloader"/></div>;
         return (
             <div className="App">
-                <div className="container">
-                    <header className="App-header">
-                        <h1 className="App-title">Welcome to TimWeather</h1>
-                    </header>
 
-                    <WeatherCityInput
-                        enterPressed={(event) => this.cityKeyPressHandler(event)}
-                        ischanged={(event) => this.cityInputHandler(event)}
-                        city={this.state.city}
-                    />
+                <div className="background-container">
+                    <div className="back">
 
-                    <WeatherRender
-                        city={this.state.city}
-                        cityUri={this.state.uri}
-                        cityLat={this.state.lat}
-                        cityLong={this.state.long}
-                        weatherData={this.state.weatherData}
-                        weeklyWeatherData={this.state.weeklyWeatherData}
-                    />
+                        <span className="sun-rays"></span>
+                        <span className="sun"></span>
+                        <div className="cloud one">
+                            <span className="cloud-body"></span>
+                            <span className="cloud-top"></span>
+                            <span className="cloud-puff"></span>
+                        </div>
+                        <div className="cloud two">
+                            <span className="cloud-body"></span>
+                            <span className="cloud-top"></span>
+                            <span className="cloud-puff"></span>
+                        </div>
+                    </div>
+
                 </div>
+
+                <div className="weather-heading">
+                    <div className="container">
+                        <div className="text">Прогноз погоды</div>
+                        <WeatherCityInput
+                            enterPressed={(event) => this.cityKeyPressHandler(event)}
+                            ischanged={(event) => this.cityInputHandler(event)}
+                            city={this.state.city}
+                        />
+                    </div>
+                </div>
+
+                <WeatherRender
+                    city={this.state.city}
+                    cityUri={this.state.uri}
+                    cityLat={this.state.lat}
+                    cityLong={this.state.long}
+                    weatherData={this.state.weatherData}
+                    weeklyWeatherData={this.state.weeklyWeatherData}
+                />
+
+                <footer className="footer">
+                    <div className="container">
+                        <p>2018. Created by Eugen Radchenko</p>
+                        <p>Non-commercial project</p>
+                    </div>
+                </footer>
             </div>
         );
     }

@@ -2,7 +2,7 @@ import React from 'react';
 
 const weatherRequestInput = (props) => {
     return (
-        <div>
+        <div className="city-input">
             <input
                 type="text"
                 placeholder="Введите название города"

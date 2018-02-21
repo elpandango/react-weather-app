@@ -31,6 +31,12 @@ const WeatherCurrent = (props) => {
         case '7':
             weatherIconClass = 'weather-icon rain-snow';
             break;
+        case '26':
+            weatherIconClass = 'weather-icon cloudy-weather';
+            break;
+        case '27':
+            weatherIconClass = 'weather-icon mostly-cloudy-night';
+            break;
         case '28':
             weatherIconClass = 'weather-icon mostly-cloudy';
             break;
@@ -46,17 +52,36 @@ const WeatherCurrent = (props) => {
     return (
         <div className="current-weather">
             <div className={weatherIconClass}></div>
-            <strong className="temp">{Math.round((props.currWeather.query.results.channel.item.condition.temp - 32)*5/9)}°</strong>
-            <strong>{props.currWeather.query.results.channel.item.condition.text}</strong>
+            <div className="total-results">
+                <div className="temp">
+                    <strong>{Math.round((props.currWeather.query.results.channel.item.condition.temp - 32)*5/9)}°C</strong>
+                </div>
+                <div className="code-description">
+                    {/*<strong>{props.currWeather.query.results.channel.item.condition.code}</strong>*/}
+                    <strong>{props.currWeather.query.results.channel.item.condition.text}</strong>
+                </div>
+            </div>
 
-            <p>Ветер: {((props.currWeather.query.results.channel.wind.speed * 1.6) * 1000 / 3600 ).toFixed(1)} м/с</p>
-            <p>Направление: {props.currWeather.query.results.channel.wind.direction}</p>
+            <div className="wind">
+                <div className="wind-icon"></div>
+                <p>{((props.currWeather.query.results.channel.wind.speed * 1.6) * 1000 / 3600 ).toFixed(1)} м/с</p>
+                <p>Направление: {props.currWeather.query.results.channel.wind.direction}</p>
 
-            <p>Влажность: {props.currWeather.query.results.channel.atmosphere.humidity}%</p>
+            </div>
+            <div className="humidity">
+                <div className="humidity-icon"></div>
+                <p>{props.currWeather.query.results.channel.atmosphere.humidity}%</p>
+            </div>
 
             <div className="sun-options">
-                <p>Восход: {props.currWeather.query.results.channel.astronomy.sunrise}</p>
-                <p>Закат: {props.currWeather.query.results.channel.astronomy.sunset}</p>
+                <div className="sun-option">
+                    <div className="sun-icon sunrise"></div>
+                    <p>{props.currWeather.query.results.channel.astronomy.sunrise}</p>
+                </div>
+                <div className="sun-option">
+                    <div className="sun-icon sunset"></div>
+                    <p>{props.currWeather.query.results.channel.astronomy.sunset}</p>
+                </div>
             </div>
         </div>
     )

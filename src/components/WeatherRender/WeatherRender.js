@@ -32,90 +32,77 @@ class weatherRender extends Component {
         return (
             <div>
 
-                <h1>Погода в городе: {decodeURI(this.props.cityUri)}</h1>
+                <div className="current-city-weather-block">
+                    <div className="container">
+                        <div className="city-name">{decodeURI(this.props.cityUri)}</div>
 
-                <div className="weather-forecast-block">
+                        <WeatherCurrent
+                            currWeather={weeklyWeatherData}/>
+                    </div>
+                </div>
+
+                <div className="container">
+
+                    <div className="weather-forecast-block">
+
+                        <div className="weather-container">
+                            <h3 className="row-title">
+                                Прогноз на 24 часа
+                            </h3>
+                            <div className="weather-row">
+                                <div className="heading-elements">
+                                    <div className="heading-elements-item short">
+                                        {/*<div className="result">Day</div>*/}
+                                        <div className="title">Дата</div>
+                                    </div>
+
+                                    <div className="heading-elements-item">
+                                        <div className="title">Погода</div>
+                                        <img src="../images/material-icon-set/weather_icon.png" alt=""/>
+                                    </div>
+
+                                    <div className="heading-elements-item">
+                                        <div className="title">Темп.</div>
+                                        <img src="../images/material-icon-set/temp_icon.png" alt=""/>
+                                    </div>
+                                </div>
+
+                                <div className="thumbs-block">
+                                    <WeatherHoursList weather={this.props.weatherData}/>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div className="weather-container">
+                        <h3 className="row-title">
+                            Прогноз на 10 дней
+                        </h3>
                         <div className="weather-row">
                             <div className="heading-elements">
                                 <div className="heading-elements-item short">
-                                    <div className="result">Day</div>
+                                    {/*<div className="result">Day</div>*/}
                                     <div className="title">Date</div>
                                 </div>
 
                                 <div className="heading-elements-item">
-                                    <div className="title">Weather</div>
+                                    <div className="title">Погода</div>
                                     <img src="../images/material-icon-set/weather_icon.png" alt=""/>
                                 </div>
 
                                 <div className="heading-elements-item">
-                                    <div className="title">Temp.</div>
+                                    <div className="title">Темп.</div>
                                     <img src="../images/material-icon-set/temp_icon.png" alt=""/>
                                 </div>
                             </div>
-
-                            <WeatherCurrent
-                                currWeather={weeklyWeatherData}/>
-
-                        </div>
-                    </div>
-
-                    <div className="weather-container">
-                        <div className="weather-row">
-                            <div className="heading-elements">
-                                <div className="heading-elements-item short">
-                                    <div className="result">Day</div>
-                                    <div className="title">Date</div>
-                                </div>
-
-                                <div className="heading-elements-item">
-                                    <div className="title">Weather</div>
-                                    <img src="../images/material-icon-set/weather_icon.png" alt=""/>
-                                </div>
-
-                                <div className="heading-elements-item">
-                                    <div className="title">Temp.</div>
-                                    <img src="../images/material-icon-set/temp_icon.png" alt=""/>
-                                </div>
+                            <div className="weather-weekly-forecast-block">
+                                <WeatherWeeklyList weather={this.props.weeklyWeatherData}/>
                             </div>
-
-                            <div className="thumbs-block">
-                                <WeatherHoursList weather={this.props.weatherData}/>
-                            </div>
-
                         </div>
                     </div>
                 </div>
-
-
-                <div className="weather-container">
-                    <h3 className="row-title">
-                        10 Days Forecast
-                    </h3>
-                    <div className="weather-row">
-                        <div className="heading-elements">
-                            <div className="heading-elements-item short">
-                                <div className="result">Day</div>
-                                <div className="title">Date</div>
-                            </div>
-
-                            <div className="heading-elements-item">
-                                <div className="title">Weather</div>
-                                <img src="../images/material-icon-set/weather_icon.png" alt=""/>
-                            </div>
-
-                            <div className="heading-elements-item">
-                                <div className="title">Temperature</div>
-                                <img src="../images/material-icon-set/temp_icon.png" alt=""/>
-                            </div>
-                        </div>
-                        <div className="weather-weekly-forecast-block">
-                            <WeatherWeeklyList weather={this.props.weeklyWeatherData}/>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         )
     }
