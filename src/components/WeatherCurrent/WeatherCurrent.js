@@ -47,6 +47,9 @@ const WeatherCurrent = (props) => {
         case '23':
             weatherIconClass = 'weather-icon partly-cloudy';
             break;
+        default:
+            weatherIconClass = 'weather-icon sunny';
+            break;
     }
 
     return (

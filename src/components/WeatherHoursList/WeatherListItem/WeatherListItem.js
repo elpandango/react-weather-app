@@ -59,6 +59,9 @@ const weatherIconItem = (props) => {
         case '50n':
             weatherIconClass = 'weather-icon haze-night';
             break;
+        default:
+            weatherIconClass = 'weather-icon sunny';
+            break;
     }
 
     return (
