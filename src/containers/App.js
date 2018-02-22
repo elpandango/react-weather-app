@@ -25,23 +25,41 @@ class App extends Component {
         long: '30.74003',
         weeklyWeatherData: null,
         weatherData: null,
-
+        correctCityName: true
     };
 
     cityGeoCoords = (tempUri) => {
         const yahooWeather = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + tempUri + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
         fetch(yahooWeather).then(res => res.json()).then(json => {
-            this.setState(
-                {
-                    weeklyWeatherData: json,
-                    lat: json.query.results.channel.item.lat,
-                    long: json.query.results.channel.item.long,
-                });
+            // if (!json.query.results === null) {
+                const correctCityName = this.state.correctCityName;
+                this.setState(
+                    {
+                        weeklyWeatherData: json,
+                        lat: json.query.results.channel.item.lat,
+                        long: json.query.results.channel.item.long
+                    });
 
-            const URL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + json.query.results.channel.item.lat + "&lon=" + json.query.results.channel.item.long + "&appid=b858912012d97512f4f233cfd486a7e4&units=metric&cnt=8";
-            fetch(URL).then(res => res.json()).then(json => {
-                this.setState({weatherData: json});
-            });
+                const URL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + json.query.results.channel.item.lat + "&lon=" + json.query.results.channel.item.long + "&appid=b858912012d97512f4f233cfd486a7e4&units=metric&cnt=8";
+                fetch(URL).then(res => res.json()).then(json => {
+                    this.setState({weatherData: json});
+
+                });
+            // } else {
+            //     this.setState({ correctCityName: false });
+            // }
+
+            // this.setState(
+            //     {
+            //         weeklyWeatherData: json,
+            //         lat: json.query.results.channel.item.lat,
+            //         long: json.query.results.channel.item.long
+            //     });
+
+            // const URL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + json.query.results.channel.item.lat + "&lon=" + json.query.results.channel.item.long + "&appid=b858912012d97512f4f233cfd486a7e4&units=metric&cnt=8";
+            // fetch(URL).then(res => res.json()).then(json => {
+            //     this.setState({weatherData: json});
+            // });
 
         });
     };
@@ -65,6 +83,20 @@ class App extends Component {
     };
 
     render() {
+        // let resultRender = null;
+        // if (!this.state.correctCityName) {
+        //     resultRender = <div>Вы ввели неправильное название города!</div>
+        // } else {
+        //     resultRender =  <WeatherRender
+        //         city={this.state.city}
+        //         cityUri={this.state.uri}
+        //         cityLat={this.state.lat}
+        //         cityLong={this.state.long}
+        //         weatherData={this.state.weatherData}
+        //         weeklyWeatherData={this.state.weeklyWeatherData}
+        //     />
+        // }
+
         if (!this.state.weeklyWeatherData) return <div className="preloader"><img src="../../images/preloader.gif"
                                                                                   alt="preloader"/></div>;
         if (!this.state.weatherData) return <div className="preloader"><img src="../../images/preloader.gif"

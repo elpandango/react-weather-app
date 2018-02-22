@@ -161,7 +161,7 @@ h1 {
     flex-wrap: nowrap;
     width: 100%;
     margin: 0 auto;
-    background-color: #fff;
+    /*background-color: #fff;*/
 }
 
 .weather-forecast-block .thumbs-block {
@@ -390,6 +390,7 @@ h1 {
     box-shadow: 0px 2px 16.56px 1.44px rgba(0, 0, 0, 0.18);
     border-radius: 4px;
     overflow: hidden;
+    background-color: #fff;
 }
 
 .weather-container .weather-row .heading-elements {
@@ -488,6 +489,8 @@ h1 {
 .weather-inner-item .weather-description {
     font-size: 12px;
     font-weight: bold;
+    max-height: 34px;
+    overflow: hidden;
 }
 
 .weather-inner-item .image {
@@ -579,6 +582,19 @@ h1 {
     background-image: url(../assets/images/material-icon-set/storm-weather-night.png);
 }
 
+.weather-icon.thunder-day {
+    background-image: url(../assets/images/material-icon-set/thunder-day.png);
+}
+.weather-icon.thunder-night {
+    background-image: url(../assets/images/material-icon-set/thunder-night.png);
+}
+
+.weather-icon.thunder-weather {
+    background-image: url(../assets/images/material-icon-set/thunder-weather.png);
+}
+.weather-icon.snow-weather {
+    background-image: url(../assets/images/material-icon-set/snow-weather.png);
+}
 .weather-icon.snow-day {
     background-image: url(../assets/images/material-icon-set/snow-day.png);
 }
