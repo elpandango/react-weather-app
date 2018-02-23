@@ -73,7 +73,9 @@ const weatherIconItem = (props) => {
 
             <div className="weather-inner-item">
                 <div className={weatherIconClass}></div>
-                <p>{props.description}</p>
+                <div className="weather-description">
+                    {props.description}
+                </div>
             </div>
 
             <div className="weather-inner-item">
