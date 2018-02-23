@@ -84,7 +84,7 @@ class weatherRender extends Component {
                             <div className="heading-elements">
                                 <div className="heading-elements-item short">
                                     {/*<div className="result">Day</div>*/}
-                                    <div className="title">Date</div>
+                                    <div className="title">Дата</div>
                                 </div>
 
                                 <div className="heading-elements-item">

@@ -122,23 +122,23 @@ const WeatherCurrent = (props) => {
                 </div>
             </div>
 
-            <div className="wind">
+            <div className="wind" title="Ветер">
                 <div className="wind-icon"></div>
                 <p>{((props.currWeather.query.results.channel.wind.speed * 1.6) * 1000 / 3600 ).toFixed(1)} м/с</p>
                 <p>Направление: {props.currWeather.query.results.channel.wind.direction}</p>
 
             </div>
-            <div className="humidity">
+            <div className="humidity" title="Влажность">
                 <div className="humidity-icon"></div>
                 <p>{props.currWeather.query.results.channel.atmosphere.humidity}%</p>
             </div>
 
             <div className="sun-options">
-                <div className="sun-option">
+                <div className="sun-option" title="Восход">
                     <div className="sun-icon sunrise"></div>
                     <p>{props.currWeather.query.results.channel.astronomy.sunrise}</p>
                 </div>
-                <div className="sun-option">
+                <div className="sun-option" title="Закат">
                     <div className="sun-icon sunset"></div>
                     <p>{props.currWeather.query.results.channel.astronomy.sunset}</p>
                 </div>
